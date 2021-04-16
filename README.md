@@ -10,7 +10,7 @@
 <br />
 <p align="center">
   <a href="https://github.com/DinoSaulo/doginhoHero">
-    <img src="ideacao/logo.png" alt="Logo" width="80" height="80">
+    <img src="ideacao/logo.png" alt="Logo" height="90">
   </a>
 
   <h3 align="center">Doginho Hero</h3>
@@ -42,10 +42,11 @@
     <li>
       <a href="#comecando">Começando</a>
       <ul>
-        <li><a href="#rrerequisitos">Pre requisitos</a></li>
+        <li><a href="#rerequisitos">Pre requisitos</a></li>
         <li><a href="#instalacao">Instalação</a></li>
       </ul>
     </li>
+    <li><a href="#ideacao">ideacao</a></li>
     <li><a href="#desenvolvedores">Desenvolvedores</a></li>
   </ol>
 </details>
@@ -93,6 +94,18 @@ Ter android acima da versão X
 
 
 
+<!-- IDEACAO -->
+## Ideacao
+
+### Diagrama ER
+[![Diagrama ER][diagrama-er]](https://app.diagrams.net/)
+
+
+### Wireframe
+[![Wireframe][wireframe]](https://www.adobe.com/br/products/xd.html)
+
+
+
 <!-- DESENVOLVEDORES -->
 ## Desenvolvedores
 
@@ -113,4 +126,5 @@ Saulo Barros - [@saulo--barros](https://www.linkedin.com/in/saulo--barros/) - sa
 [license-url]: https://github.com/othneildrew/Best-README-Template/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/othneildrew
-[product-screenshot]: images/screenshot.png
+[diagrama-er]: ideacao/ER_Diagram.png
+[wireframe]: ideacao/wireframe.jpeg
