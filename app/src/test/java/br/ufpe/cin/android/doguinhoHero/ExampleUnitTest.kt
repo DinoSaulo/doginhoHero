@@ -1,4 +1,4 @@
-package br.ufpe.cin.android.doguinhohero
+package br.ufpe.cin.android.doguinhoHero
 
 import org.junit.Test
 

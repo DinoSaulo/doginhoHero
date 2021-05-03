@@ -1,15 +1,24 @@
-package br.ufpe.cin.android.doguinhohero
+package br.ufpe.cin.android.doguinhoHero
 
 import android.content.DialogInterface
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
+import androidx.lifecycle.ViewModelProvider
+import br.ufpe.cin.android.doguinhoHero.data2.cartao.Cartao
+import br.ufpe.cin.android.doguinhoHero.data2.cartao.CartaoViewModel
+import br.ufpe.cin.android.doguinhoHero.utils.getToastMessage
+import br.ufpe.cin.android.doguinhoHero.utils.verifyInputAndGetText
+import br.ufpe.cin.android.doguinhoHero.utils.verifySpinnerAndGetSelectedOption
+import kotlinx.android.synthetic.main.activity_cadastro_cartao_de_credito.*
 
 class CadastroCartaoDeCreditoActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+
+    private lateinit var mCartaoViewModel: CartaoViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_cartao_de_credito)
@@ -29,24 +38,35 @@ class CadastroCartaoDeCreditoActivity : AppCompatActivity(), View.OnClickListene
     override fun onClick(v: View?) {
         val camposFaltantes = StringBuilder()
 
-        var formaDePagamento = verifySpinnerAndGetSelectedOption(R.id.spFormaDePagamento, "Forma de pagamento", camposFaltantes)
-        var numeroDoCartao = verifyInputAndGetText(R.id.etNumeroCartao, "Numero do Cartão", camposFaltantes)
-        var nomeDoTitular = verifyInputAndGetText(R.id.spNomeDoTitular, "Nome do Titular", camposFaltantes)
-        var dataDeVencimento = verifyInputAndGetText(R.id.etDataDeVencimento, "Data de Vencimento", camposFaltantes)
-        var codigoDeSeguranca = verifyInputAndGetText(R.id.etCodigoDeSeguranca, "Código de Seguranca", camposFaltantes)
-
-        var qtdCamposFaltando = getQuantidadeCamposFaltando(camposFaltantes)
+        var formaDePagamento = verifySpinnerAndGetSelectedOption(spFormaDePagamento,"Forma de Pagamento", camposFaltantes)
+        var numeroDoCartao = verifyInputAndGetText(etNumeroCartao, "Numero do Cartão", camposFaltantes)
+        var nomeDoTitular = verifyInputAndGetText(spNomeDoTitular, "Nome do Titular", camposFaltantes)
+        var dataDeVencimento = verifyInputAndGetText(etDataDeVencimento, "Data de Vencimento", camposFaltantes)
+        var codigoDeSeguranca = verifyInputAndGetText(etCodigoDeSeguranca, "Código de Seguranca", camposFaltantes)
 
         // Verificar se todos os campos estão preenchidos
         if(camposFaltantes.toString() != ""){
-            val consoantePlural = if(qtdCamposFaltando > 1) "s" else ""
-
-            var complementoToast = camposFaltantes.dropLast(2).toString().replace("(.*), (.*)".toRegex(), "$1 e $2")
-
-            var toastText = "Preencha o$consoantePlural campo$consoantePlural: $complementoToast"
-
+            var toastText = getToastMessage(camposFaltantes)
             Toast.makeText(applicationContext,  toastText, Toast.LENGTH_SHORT).show()
         } else {
+
+            // Caso todos os campos estejam preenchidos o cartao é cadastrado
+
+            //registra a conta bancaria
+            mCartaoViewModel = ViewModelProvider(this).get(CartaoViewModel::class.java)
+
+            val cartao = Cartao(0, formaDePagamento, numeroDoCartao, nomeDoTitular, dataDeVencimento, codigoDeSeguranca)
+
+            // bug não está retornando o id
+            var idNewCartao = mCartaoViewModel.addCartao(cartao)
+
+            //insere os dados da conta bancaria no registro do pet hero
+            var usuarioId = ""
+            var extras = getIntent().getExtras();
+            if (extras != null) {
+                usuarioId = extras.getString("usuarioId").toString();
+            }
+            //TOOO
 
             // alerta
             alertaFinalizacao()
@@ -70,9 +90,9 @@ class CadastroCartaoDeCreditoActivity : AppCompatActivity(), View.OnClickListene
 
     fun alertaFinalizacao() {
         val msgBox = AlertDialog.Builder(this)
-        msgBox.setTitle("Cadastro realizado!")
+        msgBox.setTitle(resources.getString(R.string.title_cadastro_concluido))
         msgBox.setIcon(android.R.drawable.ic_dialog_info)
-        msgBox.setMessage("Agora você já pode usar o Doguinho Hero. Aproveite!")
+        msgBox.setMessage(resources.getString(R.string.msg_cadastro_concluido))
         msgBox.setPositiveButton("OK", DialogInterface.OnClickListener(){ dialogInterface: DialogInterface, i: Int ->
             val i = Intent(applicationContext, MainActivity::class.java)
             i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
@@ -83,43 +103,6 @@ class CadastroCartaoDeCreditoActivity : AppCompatActivity(), View.OnClickListene
             finish()
         })
         msgBox.show()
-    }
-
-    fun verifyInputAndGetText(textView: Int, nomeInput: String, camposFaltantes: StringBuilder): String{
-        var red = "#ffb3b3"
-
-        val input = findViewById<EditText>(textView)
-        val inputValue = input.text.toString()
-
-        if(inputValue == ""){
-            camposFaltantes.append(nomeInput + ", ");
-            input.setBackgroundColor(Color.parseColor(red))
-        } else {
-            input.setBackgroundColor(Color.TRANSPARENT)
-        }
-
-        return inputValue
-
-    }
-
-    fun verifySpinnerAndGetSelectedOption(spinner: Int, nomeSpinner: String, camposFaltantes: StringBuilder): String{
-        var red = "#ffb3b3"
-
-        val input = findViewById<Spinner>(spinner)
-        val inputValue = input.getSelectedItem().toString()
-
-        if(inputValue == "Escolha um tipo" ||inputValue == "Escolha um porte" ){
-            camposFaltantes.append(nomeSpinner + ", ");
-            input.setBackgroundColor(Color.parseColor(red))
-        } else {
-            input.setBackgroundColor(Color.TRANSPARENT)
-        }
-
-        return inputValue
-    }
-
-    fun getQuantidadeCamposFaltando(camposFaltantes: StringBuilder): Int{
-        return camposFaltantes.count{ c -> c == ',' }
     }
 
     // funções sem uso, só estão aqui porque o android studio obriga

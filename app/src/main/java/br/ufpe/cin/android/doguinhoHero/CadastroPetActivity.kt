@@ -1,17 +1,22 @@
-package br.ufpe.cin.android.doguinhohero
+package br.ufpe.cin.android.doguinhoHero
 
 import android.content.Intent
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.*
-import br.ufpe.cin.android.doguinhohero.utils.getToastMessage
-import br.ufpe.cin.android.doguinhohero.utils.verifyInputAndGetText
-import br.ufpe.cin.android.doguinhohero.utils.verifySpinnerAndGetSelectedOption
+import androidx.lifecycle.ViewModelProvider
+import br.ufpe.cin.android.doguinhoHero.data2.pet.Pet
+import br.ufpe.cin.android.doguinhoHero.data2.pet.PetViewModel
+import br.ufpe.cin.android.doguinhoHero.utils.getToastMessage
+import br.ufpe.cin.android.doguinhoHero.utils.verifyInputAndGetText
+import br.ufpe.cin.android.doguinhoHero.utils.verifySpinnerAndGetSelectedOption
 import kotlinx.android.synthetic.main.activity_cadastro_pet.*
 
 class CadastroPetActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+
+    private lateinit var mPetViewModel: PetViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_pet)
@@ -42,7 +47,25 @@ class CadastroPetActivity : AppCompatActivity(), View.OnClickListener, AdapterVi
             var toastText = getToastMessage(camposFaltantes)
             Toast.makeText(applicationContext,  toastText, Toast.LENGTH_SHORT).show()
         } else {
+
+            //registra o pet
+            mPetViewModel = ViewModelProvider(this).get(PetViewModel::class.java)
+
+            val pet = Pet(0, nameInput, porteInput, idadeInput, tipoInput)
+
+            // bug não está retornando o id
+            var idNewPet = mPetViewModel.addPet(pet)
+
+            //insere os dados do pet no registro do dono
+            var usuarioId = ""
+            var extras = getIntent().getExtras();
+            if (extras != null) {
+                usuarioId = extras.getString("usuarioId").toString();
+            }
+            //TOOO
+
             val intent = Intent(this, CadastroCartaoDeCreditoActivity::class.java)
+            intent.putExtra("usuarioId", usuarioId);
             startActivity(intent)
         }
 

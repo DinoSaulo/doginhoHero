@@ -1,4 +1,4 @@
-package br.ufpe.cin.android.doguinhohero
+package br.ufpe.cin.android.doguinhoHero
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -12,11 +12,11 @@ import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import br.ufpe.cin.android.doguinhohero.data2.User
-import br.ufpe.cin.android.doguinhohero.data2.UserViewModel
-import br.ufpe.cin.android.doguinhohero.utils.getToastMessage
-import br.ufpe.cin.android.doguinhohero.utils.verifyInputAndGetText
-import br.ufpe.cin.android.doguinhohero.utils.verifySpinnerAndGetSelectedOption
+import br.ufpe.cin.android.doguinhoHero.data2.usuarios.User
+import br.ufpe.cin.android.doguinhoHero.data2.usuarios.UserViewModel
+import br.ufpe.cin.android.doguinhoHero.utils.getToastMessage
+import br.ufpe.cin.android.doguinhoHero.utils.verifyInputAndGetText
+import br.ufpe.cin.android.doguinhoHero.utils.verifySpinnerAndGetSelectedOption
 import kotlinx.android.synthetic.main.activity_cadastro_usuario.*
 import org.json.JSONArray
 import org.json.JSONObject
@@ -133,21 +133,23 @@ class CadastroUsuarioActivity : AppCompatActivity(), View.OnClickListener, Adapt
                 val tipoUsusario = findViewById<Spinner>(R.id.userType).selectedItem.toString()
 
                 if(tipoUsusario == "Dono de Pet"){
-
-                    //viewModel.addUsuario(nameInput, emailInput)
-                    insertDataToDatabase()
-                   val intent = Intent(this, CadastroPetActivity::class.java)
+                    val intent = Intent(this, CadastroPetActivity::class.java)
+                    val usuarioId = criarUsuario()
+                    intent.putExtra("usuarioId", usuarioId);
                     startActivity(intent)
-                } else if(tipoUsusario == "Pet Hero"){
+                } else { // pet hero
                     val intent = Intent(this, CadastroContaBancariaActivity::class.java)
+                    val usuarioId = criarUsuario()
+                    intent.putExtra("usuarioId", usuarioId);
                     startActivity(intent)
                 }
+
             }
         }
 
     }
 
-    fun insertDataToDatabase() {
+    fun criarUsuario() : Long {
         val nome = nameInput.text.toString()
         val email = emailInput.text.toString()
         val senha = passwordInput.text.toString()
@@ -162,17 +164,17 @@ class CadastroUsuarioActivity : AppCompatActivity(), View.OnClickListener, Adapt
         val longitude = tvLon.text.toString()
 
         mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        //val r = mUserViewModel.findUser(email)
-
-       // Log.d("ENCONTROU: ", r.toString())
 
         val user = User(0, nome, email, senha, tipo, cep, numero, rua, bairro, cidade, estado, latitude, longitude)
 
+        // bug não está retornando o id
+        var idNewUser = mUserViewModel.addUser(user)
 
-        mUserViewModel.addUser(user)
-        Toast.makeText(applicationContext,  "USUARIO ADICIONADO!", Toast.LENGTH_LONG).show()
+        // apenas para debug remover depois
+        val idNewUser2: Long = 2
+
+        return idNewUser2
     }
-
 
     fun isEmailValid(email: String): Boolean {
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
@@ -264,8 +266,8 @@ class CadastroUsuarioActivity : AppCompatActivity(), View.OnClickListener, Adapt
                 val lat = json.getString("lat")
                 val lon = json.getString("lon")
 
-                findViewById<TextView>(R.id.tvLat).text = lat
-                findViewById<TextView>(R.id.tvLon).text = lon
+                tvLat.text = lat
+                tvLon.text = lon
 
             } catch (ex: Exception) {
                 Log.d("Erro: ", ex.toString())
@@ -317,10 +319,10 @@ class CadastroUsuarioActivity : AppCompatActivity(), View.OnClickListener, Adapt
                 val estado = json.getString("uf")
                 pbCep.visibility = View.INVISIBLE
 
-                findViewById<TextView>(R.id.tvRua).text = logradouro
-                findViewById<TextView>(R.id.tvBairro).text = bairro
-                findViewById<TextView>(R.id.tvCidade).text = cidade
-                findViewById<TextView>(R.id.tvEstado).text = estado
+                tvRua.text = logradouro
+                tvBairro.text = bairro
+                tvCidade.text = cidade
+                tvEstado.text = estado
 
             } catch (ex: Exception) {
                 Log.d("Erro: ", ex.toString())

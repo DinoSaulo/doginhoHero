@@ -1,4 +1,4 @@
-package br.ufpe.cin.android.doguinhohero
+package br.ufpe.cin.android.doguinhoHero
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

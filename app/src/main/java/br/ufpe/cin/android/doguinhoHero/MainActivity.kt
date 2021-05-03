@@ -1,20 +1,17 @@
-package br.ufpe.cin.android.doguinhohero
+package br.ufpe.cin.android.doguinhoHero
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import android.view.View
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
-import br.ufpe.cin.android.doguinhohero.data2.User
-import br.ufpe.cin.android.doguinhohero.data2.UserViewModel
+import br.ufpe.cin.android.doguinhoHero.data2.usuarios.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
 
     private lateinit var mUserViewModel: UserViewModel
 
@@ -26,7 +23,25 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         supportActionBar!!.title = "Doguinho Hero"
 
         var btnLogin = findViewById<Button>(R.id.loginButton)
-        btnLogin.setOnClickListener(this)
+        btnLogin.setOnClickListener{
+
+            //email e senha
+            val email = etEmail.text.toString()
+            val senha = etSenha.text.toString()
+
+            mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
+            mUserViewModel.findUser(email)
+            // val usuario = mUserViewModel.loginUser(email, senha)
+
+            var usuario = false
+
+            // se não encontrar o ususário irá mostrar um toast
+            if(!usuario) {
+                Toast.makeText(this,"Usuário ou email inválidos", Toast.LENGTH_LONG).show()
+            } else {
+                // login realizado com sucesso
+            }
+        }
 
         var cadastroTextView = findViewById<TextView>(R.id.cadastroText)
         cadastroTextView.setOnClickListener{
@@ -37,24 +52,5 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     }
 
-    override fun onClick(v: View?) {
-        // fazer login
-        mUserViewModel = ViewModelProvider(this).get(UserViewModel::class.java)
-        val email = etEmail.text.toString()
-
-        try{
-            val test = mUserViewModel.findUser(email)
-            Log.d("usurio: ", test.toString())
-
-
-            Toast.makeText(applicationContext,  "USUARIO ENCONTRADO!", Toast.LENGTH_LONG).show()
-
-        } catch (ex: Exception) {
-            Log.d("Erro: ", ex.toString())
-        }
-
-
-
-    }
 
 }

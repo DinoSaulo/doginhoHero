@@ -33,7 +33,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Banco" />
+                android:text="@string/banco" />
 
             <Spinner
                 android:id="@+id/spBanco"
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tipo de Conta" />
+                android:text="@string/tipo_de_conta" />
 
             <Spinner
                 android:id="@+id/sptipoDeConta"
@@ -63,7 +63,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Agência" />
+                android:text="@string/agencia" />
 
             <EditText
                 android:id="@+id/etAgencia"
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Data de Vencimento" />
+                android:text="@string/conta" />
 
             <EditText
                 android:id="@+id/etConta"
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Finalizar" />
+                android:text="@string/finalizar" />
 
 
         </LinearLayout>

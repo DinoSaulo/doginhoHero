@@ -1,13 +1,7 @@
-package br.ufpe.cin.android.doguinhohero.utils
+package br.ufpe.cin.android.doguinhoHero.utils
 
-import android.content.DialogInterface
-import android.content.Intent
 import android.graphics.Color
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
-import android.view.*
 import android.widget.*
-import androidx.appcompat.app.AlertDialog
 
 class utils {
 

@@ -1,4 +1,4 @@
-package br.ufpe.cin.android.doguinhohero
+package br.ufpe.cin.android.doguinhoHero
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -7,10 +7,16 @@ import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
-import br.ufpe.cin.android.doguinhohero.utils.*
+import androidx.lifecycle.ViewModelProvider
+import br.ufpe.cin.android.doguinhoHero.data2.contaBancaria.ContaBancaria
+import br.ufpe.cin.android.doguinhoHero.data2.contaBancaria.ContaBancariaViewModel
+import br.ufpe.cin.android.doguinhoHero.utils.*
 import kotlinx.android.synthetic.main.activity_cadastro_conta_bancaria.*
 
 class CadastroContaBancariaActivity : AppCompatActivity(), View.OnClickListener, AdapterView.OnItemSelectedListener {
+
+    private lateinit var mContaBancariaViewModel: ContaBancariaViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_cadastro_conta_bancaria)
@@ -40,8 +46,23 @@ class CadastroContaBancariaActivity : AppCompatActivity(), View.OnClickListener,
             var toastText = getToastMessage(camposFaltantes)
             Toast.makeText(applicationContext,  toastText, Toast.LENGTH_SHORT).show()
         } else {
-            // Caso todos os campos estejam preenchidos o usuário é cadastrado
+            // Caso todos os campos estejam preenchidos o cartao é cadastrado
 
+            //registra a conta bancaria
+            mContaBancariaViewModel = ViewModelProvider(this).get(ContaBancariaViewModel::class.java)
+
+            val contaBancaria = ContaBancaria(0, tipoDeConta, banco, agencia, conta)
+
+            // bug não está retornando o id
+            var idNewContaBancaria = mContaBancariaViewModel.addContaBancaria(contaBancaria)
+
+            //insere os dados da conta bancaria no registro do pet hero
+            var usuarioId = ""
+            var extras = getIntent().getExtras();
+            if (extras != null) {
+                usuarioId = extras.getString("usuarioId").toString();
+            }
+            //TOOO
 
             alertaFinalizacao()
         }

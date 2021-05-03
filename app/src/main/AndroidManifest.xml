@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="br.ufpe.cin.android.doguinhohero">
+    package="br.ufpe.cin.android.doguinhoHero">
     <!-- permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -13,12 +13,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Doguinhohero">
-        <activity android:name=".CadastroCartaoDeCreditoActivity"></activity>
-        <activity android:name=".CadastroContaBancariaActivity" />
-        <activity android:name=".CadastroPetActivity" />
-        <activity android:name=".CadastroUsuarioActivity" />
-        <activity android:name=".Cadastro1Activity" />
-        <activity android:name=".MainActivity">
+        <activity android:name="br.ufpe.cin.android.doguinhoHero.CriarPasseioActivity"></activity>
+        <activity android:name="br.ufpe.cin.android.doguinhoHero.CadastroCartaoDeCreditoActivity" />
+        <activity android:name="br.ufpe.cin.android.doguinhoHero.CadastroContaBancariaActivity" />
+        <activity android:name="br.ufpe.cin.android.doguinhoHero.CadastroPetActivity" />
+        <activity android:name="br.ufpe.cin.android.doguinhoHero.CadastroUsuarioActivity" />
+        <activity android:name="br.ufpe.cin.android.doguinhoHero.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

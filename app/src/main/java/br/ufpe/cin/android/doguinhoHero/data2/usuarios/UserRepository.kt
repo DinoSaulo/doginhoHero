@@ -1,5 +1,6 @@
-package br.ufpe.cin.android.doguinhohero.data2
+package br.ufpe.cin.android.doguinhoHero.data2.usuarios
 
+import androidx.annotation.WorkerThread
 import androidx.lifecycle.LiveData
 
 class UserRepository(private val userDao: UserDAO) {
@@ -10,8 +11,9 @@ class UserRepository(private val userDao: UserDAO) {
         userDao.addUser(user)
     }
 
-    suspend fun findUser(email: String){
-        userDao.findUser(email)
+    @WorkerThread
+    suspend fun findUser(email: String): User {
+        return userDao.findUser(email)
     }
 
 }
