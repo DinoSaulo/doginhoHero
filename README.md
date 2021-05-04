@@ -1,11 +1,3 @@
-[![Contributors][contributors-shield]][contributors-url]
-[![Forks][forks-shield]][forks-url]
-[![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
-
-
-
 <!-- LOGO -->
 <br />
 <p align="center">
@@ -56,7 +48,6 @@
 <!-- SOBRE O PROJETO -->
 ## Sobre o Projeto
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 O Doginho Hero vai unir pessoas que tem um animal de estimação, como cachorro ou gato, com pessoas que estejam dispostas a passear com o bichinho desta pessoa.
 O aplicativo terá como principal finalidade as oportunidades de passeio, que serão momentos pré disponibilizados por um usuário para poder passear com o animal de estimação de outro usuário, essas oportunidades de passeio irão conter, algumas informações de localização que serão obtidas durante a realização do passeio e um check list com fotos tiradas pelo celular que irão registrar algumas partes do passeio.
@@ -81,7 +72,7 @@ Fazer fork do repositorio
 
 ### Prerequisitos
 
-Ter android acima da versão X
+Ter android acima da versão 4.2
 
 ### Instalacao
 
@@ -89,7 +80,7 @@ Ter android acima da versão X
    ```sh
    git clone https://github.com/DinoSaulo/doginhoHero.git
    ```
-2. Transferir o executavel para o celular
+2. Transferir o executavel da pasta APK para um dispositivo Android
 3. Instalar no celular
 
 
