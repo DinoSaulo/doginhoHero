@@ -56,6 +56,10 @@ fun getToastMessage(camposFaltantes: StringBuilder ): String{
     return toastText
 }
 
+fun isEmailValid(email: String): Boolean {
+    return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+}
+
 fun startSpinerInput(spinner: Spinner, opcoes: Array<String>){
     // Estruturando o spinner de tipos de usuáios
     var userTypesOptions = opcoes
@@ -70,4 +74,6 @@ fun startSpinerInput(spinner: Spinner, opcoes: Array<String>){
     // Definir adaptador para girador
     //spinner!!.setAdapter(aa)
 }
+
+
 

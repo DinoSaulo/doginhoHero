@@ -38,11 +38,11 @@ class CadastroCartaoDeCreditoActivity : AppCompatActivity(), View.OnClickListene
     override fun onClick(v: View?) {
         val camposFaltantes = StringBuilder()
 
-        var formaDePagamento = verifySpinnerAndGetSelectedOption(spFormaDePagamento,"Forma de Pagamento", camposFaltantes)
-        var numeroDoCartao = verifyInputAndGetText(etNumeroCartao, "Numero do Cartão", camposFaltantes)
-        var nomeDoTitular = verifyInputAndGetText(spNomeDoTitular, "Nome do Titular", camposFaltantes)
-        var dataDeVencimento = verifyInputAndGetText(etDataDeVencimento, "Data de Vencimento", camposFaltantes)
-        var codigoDeSeguranca = verifyInputAndGetText(etCodigoDeSeguranca, "Código de Seguranca", camposFaltantes)
+        var formaDePagamento = verifySpinnerAndGetSelectedOption(spFormaDePagamento,"@string/forma_de_pagamento", camposFaltantes)
+        var numeroDoCartao = verifyInputAndGetText(etNumeroCartao, "@string/numero_do_cart_o", camposFaltantes)
+        var nomeDoTitular = verifyInputAndGetText(spNomeDoTitular, "@string/nome_do_titular", camposFaltantes)
+        var dataDeVencimento = verifyInputAndGetText(etDataDeVencimento, "@string/data_de_vencimento", camposFaltantes)
+        var codigoDeSeguranca = verifyInputAndGetText(etCodigoDeSeguranca, "@string/codigo_de_seguranca", camposFaltantes)
 
         // Verificar se todos os campos estão preenchidos
         if(camposFaltantes.toString() != ""){

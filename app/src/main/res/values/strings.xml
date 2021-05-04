@@ -7,9 +7,32 @@
     <string name="msg_cadastro_concluido">Agora você já pode usar o Doguinho Hero. Aproveite!</string>
     <string name="agencia">Agência</string>
     <string name="conta">Conta</string>
-    <string name="finalizar">Finalizar</string>
     <string name="tipo_de_conta">Tipo de Conta</string>
     <string name="banco">Banco</string>
+    <string name="dados_pessoais">Dados Pessoais</string>
+    <string name="repetir_email">Repetir Email</string>
+    <string name="senha">Senha</string>
+    <string name="repetir_senha">Repetir Senha</string>
+    <string name="email">Email</string>
+    <string name="complemento">Complemento</string>
+    <string name="bairro">Bairro:</string>
+    <string name="rua">Rua:</string>
+    <string name="cidade">Cidade:</string>
+    <string name="estado">Estado:</string>
+    <string name="latituide"><![CDATA[<Latituide>]]></string>
+    <string name="tipo_do_pet">Tipo do PET</string>
+    <string name="nome">Nome</string>
+    <string name="porte">Porte</string>
+    <string name="idade">Idade</string>
+    <string name="foto">Foto</string>
+    <string name="proseguir">Proseguir</string>
+    <string name="forma_de_pagamento">Forma de Pagamento</string>
+    <string name="numero_do_cart_o">Numero do cartão</string>
+    <string name="nome_do_titular">Nome do Titular</string>
+    <string name="data_de_vencimento">Data de Vencimento</string>
+    <string name="codigo_de_seguranca">Código de Segurança</string>
+    <string name="finalizar">Finalizar</string>
+    <string name="longitude"><![CDATA[<Longitude>]]></string>
     <string-array name="test">
         <item>item1</item>
         <item>item2</item>

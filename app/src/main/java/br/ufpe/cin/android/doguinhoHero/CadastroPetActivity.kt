@@ -36,10 +36,10 @@ class CadastroPetActivity : AppCompatActivity(), View.OnClickListener, AdapterVi
     override fun onClick(v: View?) {
         val camposFaltantes = StringBuilder()
 
-        var tipoInput = verifySpinnerAndGetSelectedOption(spTipoDePet, "Tipo do PET", camposFaltantes)
-        var nameInput = verifyInputAndGetText(etNomeDoPet, "Nome", camposFaltantes)
-        var porteInput = verifySpinnerAndGetSelectedOption(spPorteDoPet, "Porte", camposFaltantes)
-        var idadeInput = verifyInputAndGetText(etIdadeDoPet, "Idade", camposFaltantes)
+        var tipoInput = verifySpinnerAndGetSelectedOption(spTipoDePet, "@string/tipo_do_pet", camposFaltantes)
+        var nameInput = verifyInputAndGetText(etNomeDoPet, "@string/nome", camposFaltantes)
+        var porteInput = verifySpinnerAndGetSelectedOption(spPorteDoPet, "@string/porte", camposFaltantes)
+        var idadeInput = verifyInputAndGetText(etIdadeDoPet, "@string/idade", camposFaltantes)
         // verificar também a foto
 
         // Verificar se todos os campos estão preenchidos

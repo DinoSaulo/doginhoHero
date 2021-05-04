@@ -28,7 +28,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textSize="16sp"
-            android:text="Email" />
+            android:text="@string/email" />
 
         <EditText
             android:id="@+id/etEmail"
@@ -43,7 +43,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:textSize="16sp"
-            android:text="Senha" />
+            android:text="@string/senha" />
 
         <EditText
             android:id="@+id/etSenha"

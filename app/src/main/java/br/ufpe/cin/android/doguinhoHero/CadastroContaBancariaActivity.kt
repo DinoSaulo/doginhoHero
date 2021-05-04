@@ -36,10 +36,10 @@ class CadastroContaBancariaActivity : AppCompatActivity(), View.OnClickListener,
     override fun onClick(v: View?) {
         val camposFaltantes = StringBuilder()
 
-        var banco = verifySpinnerAndGetSelectedOption(spBanco, "Banco", camposFaltantes)
-        var tipoDeConta = verifySpinnerAndGetSelectedOption(sptipoDeConta, "Tipo de Conta", camposFaltantes)
-        var agencia = verifyInputAndGetText(etAgencia, "Agência", camposFaltantes)
-        var conta = verifyInputAndGetText(etConta, "Conta", camposFaltantes)
+        var banco = verifySpinnerAndGetSelectedOption(spBanco, "@string/banco", camposFaltantes)
+        var tipoDeConta = verifySpinnerAndGetSelectedOption(sptipoDeConta, "@string/tipo_de_conta", camposFaltantes)
+        var agencia = verifyInputAndGetText(etAgencia, "@string/agencia", camposFaltantes)
+        var conta = verifyInputAndGetText(etConta, "@string/conta", camposFaltantes)
 
         // Verificar se todos os campos estão preenchidos
         if(camposFaltantes.toString() != ""){

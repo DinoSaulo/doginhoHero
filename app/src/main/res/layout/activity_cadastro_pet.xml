@@ -32,7 +32,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Tipo do PET" />
+                android:text="@string/tipo_do_pet" />
 
             <Spinner
                 android:id="@+id/spTipoDePet"
@@ -47,7 +47,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Nome" />
+                android:text="@string/nome" />
 
             <EditText
                 android:id="@+id/etNomeDoPet"
@@ -61,7 +61,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Porte" />
+                android:text="@string/porte" />
 
             <Spinner
                 android:id="@+id/spPorteDoPet"
@@ -76,7 +76,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Idade" />
+                android:text="@string/idade" />
 
             <EditText
                 android:id="@+id/etIdadeDoPet"
@@ -89,7 +89,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Foto" />
+                android:text="@string/foto" />
 
             <ImageView
                 android:id="@+id/imageView"
@@ -98,14 +98,14 @@
                 android:layout_weight="1"
                 tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
+            <!-- FOTOS DO PET input -->
+
             <Button
                 android:id="@+id/nextStepButton2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Proseguir" />
-
-            <!-- FOTOS DO PET input -->
+                android:text="@string/proseguir" />
 
         </LinearLayout>
     </ScrollView>

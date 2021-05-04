@@ -15,6 +15,7 @@ import androidx.lifecycle.ViewModelProvider
 import br.ufpe.cin.android.doguinhoHero.data2.usuarios.User
 import br.ufpe.cin.android.doguinhoHero.data2.usuarios.UserViewModel
 import br.ufpe.cin.android.doguinhoHero.utils.getToastMessage
+import br.ufpe.cin.android.doguinhoHero.utils.isEmailValid
 import br.ufpe.cin.android.doguinhoHero.utils.verifyInputAndGetText
 import br.ufpe.cin.android.doguinhoHero.utils.verifySpinnerAndGetSelectedOption
 import kotlinx.android.synthetic.main.activity_cadastro_usuario.*
@@ -174,10 +175,6 @@ class CadastroUsuarioActivity : AppCompatActivity(), View.OnClickListener, Adapt
         val idNewUser2: Long = 2
 
         return idNewUser2
-    }
-
-    fun isEmailValid(email: String): Boolean {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 
     // funções sem uso, só estão aqui porque o android studio obriga
